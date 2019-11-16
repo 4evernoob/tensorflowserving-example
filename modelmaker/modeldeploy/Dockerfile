@@ -1,4 +1,3 @@
-
 # Using the official tensorflow serving image from docker hub as base image
 FROM tensorflow/serving:latest
 
