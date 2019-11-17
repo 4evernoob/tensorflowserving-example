@@ -41,7 +41,7 @@ model.compile(
     optimizer='adam',
     metrics=['accuracy'])
 #model training
-model.fit(x=x, y=y,batch_size=64,  epochs=1000, validation_split=0.2)
+model.fit(x=x, y=y,batch_size=64,  epochs=10, validation_split=0.2)
 # just watching some results
 print(model.predict(xt))
 print(yt)

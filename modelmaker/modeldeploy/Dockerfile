@@ -9,10 +9,11 @@ COPY eltesto /eltesto
 
 # Copy NGINX configuration to the container
 COPY nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80
-# starts NGINX and TF serving pointing to our model
-ENTRYPOINT service nginx start
-#| tensorflow_model_server --rest_api_port=8501 \
-# --model_name=winetest \
-# --model_base_path=/eltesto
 
+
+
+# starts NGINX and TF serving pointing to our model
+ENTRYPOINT service nginx start | tensorflow_model_server --rest_api_port=8501 \
+ --model_name=winetest \
+ --model_base_path=/eltesto
+#EXPOSE 8070
