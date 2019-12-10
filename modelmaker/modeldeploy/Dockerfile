@@ -25,7 +25,7 @@ COPY nginx.conf /etc/nginx/nginx.conf.template
  #--model_base_path=/eltesto)>server.log 2>&1
 
 #CMD ["/usr/sbin/nginx"]
-CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf" && nginx -g 'daemon off;'
+#CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf" && nginx -g 'daemon off;'
 #&&
 CMD tensorflow_model_server --rest_api_port=$PORT \
  --model_name=winetest \
