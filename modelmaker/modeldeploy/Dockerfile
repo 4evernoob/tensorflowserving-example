@@ -24,5 +24,6 @@ RUN echo $PORT > jep.txt
  #--model_name=winetest \
  #--model_base_path=/eltesto)>server.log 2>&1
 
-CMD ["/usr/sbin/nginx"]
+#CMD ["/usr/sbin/nginx"]
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf"
 #EXPOSE 8070
