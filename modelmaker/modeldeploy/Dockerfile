@@ -17,7 +17,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 
 # starts NGINX and TF serving pointing to our model
-ENTRYPOINT (service nginx start)
+#ENTRYPOINT (service nginx start)
+CMD ["/usr/sbin/nginx"]
 #| (tensorflow_model_server --rest_api_port=5000 \
 # --model_name=winetest \
 # --model_base_path=/eltesto)>server.log 2>&1
