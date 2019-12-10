@@ -13,7 +13,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 
 # starts NGINX and TF serving pointing to our model
-ENTRYPOINT service nginx start | tensorflow_model_server --rest_api_port=8501 \
+ENTRYPOINT service nginx start | tensorflow_model_server --rest_api_port=5000 \
  --model_name=winetest \
  --model_base_path=/eltesto
 #EXPOSE 8070
