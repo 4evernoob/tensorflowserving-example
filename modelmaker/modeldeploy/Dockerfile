@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y tensorflow-model-server-universal sed g
 COPY eltesto /eltesto
 
 # Copy NGINX configuration to the container
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default.conf.template /etc/nginx/conf.d/default.conf.template
+COPY nginx.conf /etc/nginx/nginx.conf.template
+#COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 #RUN envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 #envsubst '\$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
 #RUN echo "daemon off;" >> /etc/nginx/nginx.conf
@@ -25,5 +25,7 @@ COPY default.conf.template /etc/nginx/conf.d/default.conf.template
  #--model_base_path=/eltesto)>server.log 2>&1
 
 #CMD ["/usr/sbin/nginx"]
-CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf" && tensorflow_model_server --rest_api_port=15000 \
+ --model_name=winetest \
+ --model_base_path=/eltesto)&& nginx -g 'daemon off;'
 #EXPOSE 8070
