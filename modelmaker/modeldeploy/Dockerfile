@@ -17,8 +17,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 #RUN envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 #envsubst '\$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-RUN echo $PORT > jep.txt
+#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+#RUN echo $PORT > jep.txt
 # starts NGINX and TF serving pointing to our model
 #ENTRYPOINT (/usr/sbin/nginx)| (tensorflow_model_server --rest_api_port=15000 \
  #--model_name=winetest \
