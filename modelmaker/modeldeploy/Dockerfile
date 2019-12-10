@@ -17,9 +17,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf
 # starts NGINX and TF serving pointing to our model
-ENTRYPOINT (/usr/sbin/nginx)| (tensorflow_model_server --rest_api_port=15000 \
- --model_name=winetest \
- --model_base_path=/eltesto)>server.log 2>&1
+#ENTRYPOINT (/usr/sbin/nginx)| (tensorflow_model_server --rest_api_port=15000 \
+ #--model_name=winetest \
+ #--model_base_path=/eltesto)>server.log 2>&1
 
-#CMD ["/usr/sbin/nginx"]
+CMD ["/usr/sbin/nginx"]
 #EXPOSE 8070
