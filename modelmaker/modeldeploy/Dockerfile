@@ -2,9 +2,10 @@
 FROM ubuntu:18.04
 
 # Installing NGINX
-RUN apt-get update && apt-get install -y --no-install-recommends nginx curl gnupg2 
+RUN apt-get update && apt-get install -y --no-install-recommends nginx curl gnupg2 wget
 RUN echo "deb [arch=amd64] http://storage.googleapis.com/tensorflow-serving-apt stable tensorflow-model-server tensorflow-model-server-universal" | tee /etc/apt/sources.list.d/tensorflow-serving.list
-RUN curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg | apt-key add -
+RUN wget https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg 
+RUN apt-key add gpg
 RUN apt-get update && apt-get install -y tensorflow-model-server-universal
 RUN apt-get upgrade tensorflow-model-server-universal
 # Copy our model folder to the container
