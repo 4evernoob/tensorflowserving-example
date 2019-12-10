@@ -1,9 +1,9 @@
 # Using the official tensorflow serving image from docker hub as base image
 FROM ubuntu:18.04
-RUN apt-get install tensorflow-model-server
+
 # Installing NGINX
 RUN apt-get update && apt-get install -y --no-install-recommends nginx
-
+RUN apt-get install -y tensorflow-model-server
 # Copy our model folder to the container
 COPY eltesto /eltesto
 
