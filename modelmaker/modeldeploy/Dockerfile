@@ -26,7 +26,8 @@ COPY nginx.conf /etc/nginx/nginx.conf.template
 
 #CMD ["/usr/sbin/nginx"]
 CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf" && nginx -g 'daemon off;'
-#&& tensorflow_model_server --rest_api_port=15000 \
-# --model_name=winetest \
-# --model_base_path=/eltesto
+#&&
+CMD tensorflow_model_server --rest_api_port=$PORT \
+ --model_name=winetest \
+ --model_base_path=/eltesto
 #EXPOSE 8070
