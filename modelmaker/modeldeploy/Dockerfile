@@ -13,7 +13,7 @@ COPY eltesto /eltesto
 
 # Copy NGINX configuration to the container
 COPY nginx.conf /etc/nginx/nginx.conf
-
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 
 # starts NGINX and TF serving pointing to our model
