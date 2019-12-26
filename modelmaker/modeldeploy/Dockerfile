@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y tensorflow-model-server sed gettext-bas
 # Copy our model folder to the container
 COPY eltesto /eltesto
 # run rest api
-CMD tensorflow_model_server --rest_api_port=$PORT \
+CMD tensorflow_model_server --port=$PORT \
  --model_name=winetest \
  --model_base_path=/eltesto
 
